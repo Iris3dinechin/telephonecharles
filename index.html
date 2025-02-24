@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Déverrouiller le Téléphone de Charles</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: url('https://via.placeholder.com/800x1200.png?text=Téléphone+de+Charles') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .hidden {
+            display: none;
+        }
+        .error {
+            color: red;
+        }
+        .hint {
+            font-style: italic;
+            color: blue;
+        }
+        .image-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Déverrouiller le Téléphone de Charles</h1>
+        <p>Entrez le code à 4 chiffres pour déverrouiller le téléphone de Charles.</p>
+        <input type="text" id="code" maxlength="4" placeholder="Code à 4 chiffres">
+        <button onclick="verifyCode()">Vérifier</button>
+        <p id="message"></p>
+        <button id="hintButton" class="hidden" onclick="showHint()">Indice ?</button>
+        <div class="image-container hidden" id="imageContainer">
+            <img id="unlockedImage" src="URL_DE_VOTRE_IMAGE" alt="Image déverrouillée">
+        </div>
+    </div>
+
+    <script>
+        let attemptCount = 0;
+        const correctCode = '0802';
+        const hints = [
+            "Charles a la tête en l'air. Il doit avoir mis quelque chose qui a une signification importante pour lui...",
+            "Une date peut-être ?",
+            "Regardez sa photo d'écran d'accueil !"
+        ];
+
+        function verifyCode() {
+            const code = document.getElementById('code').value;
+            const message = document.getElementById('message');
+            const hintButton = document.getElementById('hintButton');
+            const imageContainer = document.getElementById('imageContainer');
+
+            if (code === correctCode) {
+                message.innerHTML = 'Code correct !';
+                message.style.color = 'green';
+                hintButton.classList.add('hidden');
+                imageContainer.classList.remove('hidden');
+            } else {
+                attemptCount++;
+                message.innerHTML = '<span class="error">Code incorrect.</span>';
+                if (attemptCount <= 3) {
+                    hintButton.classList.remove('hidden');
+                }
+                if (attemptCount > 3) {
+                    message.innerHTML += '<br>Essayez à nouveau.';
+                }
+                message.style.color = 'red';
+            }
+        }
+
+        function showHint() {
+            const message = document.getElementById('message');
+            if (attemptCount > 0 && attemptCount <= hints.length) {
+                message.innerHTML += `<br><span class="hint">${hints[attemptCount - 1]}</span>`;
+                attemptCount++;
+                if (attemptCount > hints.length) {
+                    document.getElementById('hintButton').classList.add('hidden');
+                }
+            }
+        }
+    </script>
+</body>
+</html>
