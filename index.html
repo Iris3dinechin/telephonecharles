@@ -56,6 +56,16 @@
         <div class="image-container hidden" id="imageContainer">
             <img id="unlockedImage" src="https://github.com/Iris3dinechin/telephonecharles/raw/main/agendacharles.jpeg" alt="Image déverrouillée">        </div>
     </div>
+     <div id="step1">
+        <h1>Chères agents, il faut agir vite. Où voulez-vous aller fouiller maintenant ?</h1>
+        <div class="choice" onclick="selectLocation('Les Deux Rives')">Au café Les Deux Rives</div>
+        <div class="choice" onclick="selectLocation('Chez les Baratgin')">Chez les Baratgin</div>
+        <div class="choice" onclick="selectLocation('Chez RS')">Chez RS</div>
+        <div class="choice" onclick="selectLocation('Théâtre des Champs-Elysées')">Au théâtre des Champs-Elysées</div>
+        <p id="response1" class="error hidden">NON ! Vous n'avez pas de temps à perdre. Essayez un autre lieu.</p>
+        <p id="success1" class="success hidden">Cela me paraît une bonne piste : foncez !</p>
+        <button onclick="nextStep(2)" class="hidden" id="nextButton1">Étape suivante</button>
+    </div>
 
     <script>
         let attemptCount = 0;
