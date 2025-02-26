@@ -67,19 +67,14 @@
     </div>
 
     <div class="container hidden" id="step3">
-        <h1>Demandez la 2ème enveloppe avant de continuer.</h1>
-        <button onclick="nextStep(4)">Étape suivante</button>
-    </div>
-
-    <div class="container hidden" id="step4">
         <h1>Êtes-vous sûres d'avoir bien fouillé partout dans la chambre ?</h1>
         <div class="button-container">
-            <button onclick="nextStep(5)">OUI</button>
+            <button onclick="nextStep(4)">OUI</button>
             <button onclick="nextStep(2)">NON</button>
         </div>
     </div>
 
-    <div class="container hidden" id="step5">
+    <div class="container hidden" id="step4">
         <h1>Chères agents, il faut agir vite. Où voulez-vous aller fouiller maintenant ?</h1>
         <div class="button-container">
             <button onclick="selectLocation('Les Deux Rives')">Au café Les Deux Rives</button>
@@ -89,8 +84,13 @@
         </div>
         <p id="response1" class="error hidden">NON ! Vous n'avez pas de temps à perdre. Essayez un autre lieu.</p>
         <p id="success1" class="success hidden">Cela me paraît une bonne piste : foncez !</p>
+        <button onclick="nextStep(5)">Étape suivante</button>
+     </div>
+    
+    <div class="container hidden" id="step5">
+        <h1>Demandez la 2ème enveloppe avant de continuer.</h1>
     </div>
-
+    
     <script>
         let currentStep = 1;
         let attemptCount = 0;
